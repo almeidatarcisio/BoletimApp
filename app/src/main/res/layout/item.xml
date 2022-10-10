@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtDisciplina"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtTurma"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <TextView
+            android:id="@+id/txtTurma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Turma: "
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtA1"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="60dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtA1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nota A1: "
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtA2"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="85dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtA2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nota A2: "
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtsub"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="110dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/txtsub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Substitutiva: "
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtA3"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="135dp" />
+
+        <TextView
+            android:id="@+id/txtA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exame Final: "
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtFaltasA1"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="160dp" />
+
+        <TextView
+            android:id="@+id/txtFaltasA1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faltas A1: "
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtFaltasA2"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="185dp" />
+
+        <TextView
+            android:id="@+id/txtFaltasA2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Faltas A2: "
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="210dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

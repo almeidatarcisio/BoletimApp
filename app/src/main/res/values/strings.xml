@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BoletimApp</string>
+    <string name="txtBemVindo">Entrada de Usuário</string>
+    <string name="edtCpf">CPF</string>
+    <string name="edtSenha">Senha</string>
+    <string name="btnLogin">LOGIN</string>
+    <string name="txtBoletim">Boletim</string>
+    <string name="btnDetalharA1">Detalhar A1</string>
+    <string name="btnDetalharA2">Detalhar A2</string>
+</resources>
