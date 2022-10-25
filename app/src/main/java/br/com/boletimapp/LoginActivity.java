@@ -25,7 +25,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
 
     String urlWebServicesDesenvolvimento = "http://192.168.1.103/boletim/getUsuarios.php";
-    String urlWebServicesProducao = "http://www.seusite.com.br/pastanosite/getUsuarios.php";
+    String urlWebServicesProducao = "gs://webservicesboletimapp/getUsuarios.php";
 
     StringRequest stringRequest;
     RequestQueue requestQueue;

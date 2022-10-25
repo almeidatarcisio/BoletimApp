@@ -39,9 +39,9 @@ import static android.R.layout.simple_spinner_item;
 public class NotasActivity extends AppCompatActivity {
 
     String urlWebServicesDesenvolvimentoSemestres = "http://192.168.1.103/boletim/getSemestres.php";
-    String urlWebServicesProducaoSemestres = "http://www.seusite.com.br/pastanosite/getSemestres.php";
+    String urlWebServicesProducaoSemestres = "gs://webservicesboletimapp/getSemestres.php";
     String urlWebServicesDesenvolvimentoNotas = "http://192.168.1.103/boletim/getNotas.php";
-    String urlWebServicesProducaoNotas = "http://www.seusite.com.br/pastanosite/getNotas.php";
+    String urlWebServicesProducaoNotas = "gs://webservicesboletimapp/getNotas.php";
     private static ProgressDialog mProgressDialog;
     private ArrayList<GoodModel> goodModelArrayList;
     private ArrayList<String> names = new ArrayList<String>();
@@ -79,7 +79,7 @@ public class NotasActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        btnDetalharA1 = findViewById(R.id.btnDetalharA1);
+/**        btnDetalharA1 = findViewById(R.id.btnDetalharA1);
         btnDetalharA2 = findViewById(R.id.btnDetalharA2);
 
         btnDetalharA1.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +93,7 @@ public class NotasActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Implementação em andamento...", Toast.LENGTH_SHORT).show();
             }
         });
-
+**/
         retrieveJSONSemestres();
 
     }
