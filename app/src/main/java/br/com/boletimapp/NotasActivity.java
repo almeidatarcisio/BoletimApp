@@ -38,10 +38,10 @@ import static android.R.layout.simple_spinner_item;
 
 public class NotasActivity extends AppCompatActivity {
 
-    String urlWebServicesDesenvolvimentoSemestres = "http://192.168.1.103/boletim/getSemestres.php";
-    String urlWebServicesProducaoSemestres = "gs://webservicesboletimapp/getSemestres.php";
-    String urlWebServicesDesenvolvimentoNotas = "http://192.168.1.103/boletim/getNotas.php";
-    String urlWebServicesProducaoNotas = "gs://webservicesboletimapp/getNotas.php";
+    String urlWebServicesDesenvolvimentoSemestres = "http://192.168.1.102/boletim/getSemestres.php";
+    String urlWebServicesProducaoSemestres = "https://git.heroku.com/boletimapp.git/getSemestres.php";
+    String urlWebServicesDesenvolvimentoNotas = "http://192.168.1.102/boletim/getNotas.php";
+    String urlWebServicesProducaoNotas = "https://git.heroku.com/boletimapp.git/getNotas.php";
     private static ProgressDialog mProgressDialog;
     private ArrayList<GoodModel> goodModelArrayList;
     private ArrayList<String> names = new ArrayList<String>();
@@ -102,7 +102,7 @@ public class NotasActivity extends AppCompatActivity {
 
         showSimpleProgressDialog(this, "Carregando...","Buscando dados",false);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlWebServicesDesenvolvimentoSemestres,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlWebServicesProducaoSemestres,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(final String response) {
@@ -182,7 +182,7 @@ public class NotasActivity extends AppCompatActivity {
 
         showSimpleProgressDialog(this, "Carregando...","Buscando dados",false);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlWebServicesDesenvolvimentoNotas,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urlWebServicesProducaoNotas,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(final String response) {

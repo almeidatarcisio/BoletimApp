@@ -24,8 +24,8 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    String urlWebServicesDesenvolvimento = "http://192.168.1.103/boletim/getUsuarios.php";
-    String urlWebServicesProducao = "gs://webservicesboletimapp/getUsuarios.php";
+    String urlWebServicesDesenvolvimento = "http://192.168.1.102/boletim/getUsuarios.php";
+    String urlWebServicesProducao = "https://git.heroku.com/boletimapp.git/getUsuarios.php";
 
     StringRequest stringRequest;
     RequestQueue requestQueue;
@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
     private void validarLogin(){
 
         stringRequest = new StringRequest(Request.Method.POST,
-                                            urlWebServicesDesenvolvimento,
+                                             urlWebServicesProducao,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {

@@ -1,0 +1,7 @@
+{
+  "name": "tarcisio/boletimapp-php",
+  "description": "App para consulta de boletim academico",
+  "require": {
+    "php": ">=7.2.0"
+  }
+}
