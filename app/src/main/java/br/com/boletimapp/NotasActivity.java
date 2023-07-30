@@ -38,9 +38,9 @@ import static android.R.layout.simple_spinner_item;
 
 public class NotasActivity extends AppCompatActivity {
 
-    String urlWebServicesDesenvolvimentoSemestres = "http://192.168.1.103/boletim/getSemestres.php";
+    String urlWebServicesDesenvolvimentoSemestres = "http://192.168.1.102/boletim/getSemestres.php";
     String urlWebServicesProducaoSemestres = "gs://webservicesboletimapp/getSemestres.php";
-    String urlWebServicesDesenvolvimentoNotas = "http://192.168.1.103/boletim/getNotas.php";
+    String urlWebServicesDesenvolvimentoNotas = "http://192.168.1.102/boletim/getNotas.php";
     String urlWebServicesProducaoNotas = "gs://webservicesboletimapp/getNotas.php";
     private static ProgressDialog mProgressDialog;
     private ArrayList<GoodModel> goodModelArrayList;

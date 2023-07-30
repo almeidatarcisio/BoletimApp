@@ -22,9 +22,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import br.com.fasj.unibrasapp.NotasActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
-    String urlWebServicesDesenvolvimento = "http://192.168.1.103/boletim/getUsuarios.php";
+    String urlWebServicesDesenvolvimento = "http://192.168.1.102/boletim/getUsuarios.php";
     String urlWebServicesProducao = "gs://webservicesboletimapp/getUsuarios.php";
 
     StringRequest stringRequest;
