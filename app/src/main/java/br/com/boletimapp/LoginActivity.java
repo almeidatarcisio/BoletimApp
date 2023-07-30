@@ -27,7 +27,7 @@ import br.com.fasj.unibrasapp.NotasActivity;
 public class LoginActivity extends AppCompatActivity {
 
     String urlWebServicesDesenvolvimento = "http://192.168.1.102/boletim/getUsuarios.php";
-    String urlWebServicesProducao = "gs://webservicesboletimapp/getUsuarios.php";
+    String urlWebServicesProducao = "https://boletimapp-926eb279460d.herokuapp.com/app/web_services/service1/index.php";
 
     StringRequest stringRequest;
     RequestQueue requestQueue;
@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
     private void validarLogin(){
 
         stringRequest = new StringRequest(Request.Method.POST,
-                                            urlWebServicesDesenvolvimento,
+                urlWebServicesProducao,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
