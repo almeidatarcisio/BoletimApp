@@ -27,7 +27,7 @@ import br.com.fasj.unibrasapp.NotasActivity;
 public class LoginActivity extends AppCompatActivity {
 
     String urlWebServicesDesenvolvimento = "http://192.168.1.102/boletim/getUsuarios.php";
-    String urlWebServicesProducao = "https://webserviceboletimapp-4b5c144f4038.herokuapp.com/service1/";
+    String urlWebServicesProducao = "https://webservicesboletimapp-production.up.railway.app/service1/";
 
     StringRequest stringRequest;
     RequestQueue requestQueue;

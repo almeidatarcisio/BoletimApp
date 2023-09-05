@@ -39,9 +39,9 @@ import static android.R.layout.simple_spinner_item;
 public class NotasActivity extends AppCompatActivity {
 
     String urlWebServicesDesenvolvimentoSemestres = "http://192.168.1.102/boletim/getSemestres.php";
-    String urlWebServicesProducaoSemestres = "https://webserviceboletimapp-4b5c144f4038.herokuapp.com/service2/";
+    String urlWebServicesProducaoSemestres = "https://webservicesboletimapp-production.up.railway.app/service2/";
     String urlWebServicesDesenvolvimentoNotas = "http://192.168.1.102/boletim/getNotas.php";
-    String urlWebServicesProducaoNotas = "https://webserviceboletimapp-4b5c144f4038.herokuapp.com/service3/";
+    String urlWebServicesProducaoNotas = "https://webservicesboletimapp-production.up.railway.app/service3/";
     private static ProgressDialog mProgressDialog;
     private ArrayList<GoodModel> goodModelArrayList;
     private ArrayList<String> names = new ArrayList<String>();
