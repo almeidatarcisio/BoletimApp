@@ -1,0 +1,12 @@
+{
+    "name": "tarcisioalmeida/service1",
+    "description": "Web Service para o app BoletimApp",
+    "type": "project",
+    "authors": [
+        {
+            "name": "almeidatarcisio",
+            "email": "tarcisiocomp@gmail.com"
+        }
+    ],
+    "require": {}
+}

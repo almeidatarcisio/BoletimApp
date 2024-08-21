@@ -1,4 +1,4 @@
-package br.com.fasj.unibrasapp;
+package br.com.boletimapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,12 +37,16 @@ import java.util.Map;
 
 import static android.R.layout.simple_spinner_item;
 
+import br.com.boletimapp.Nota;
+import br.com.boletimapp.NotaAdapter;
+import br.com.fasj.unibrasapp.R;
+
 public class NotasActivity extends AppCompatActivity {
 
     String urlWebServicesDesenvolvimentoSemestres = "http://192.168.1.102/boletim/getSemestres.php";
-    String urlWebServicesProducaoSemestres = "https://webservicesboletimapp-production.up.railway.app/service2/";
+    String urlWebServicesProducaoSemestres = "https://webservicespredictapp-production.up.railway.app/service2/";
     String urlWebServicesDesenvolvimentoNotas = "http://192.168.1.102/boletim/getNotas.php";
-    String urlWebServicesProducaoNotas = "https://webservicesboletimapp-production.up.railway.app/service3/";
+    String urlWebServicesProducaoNotas = "https://webservicespredictapp-production.up.railway.app/service3/";
     private static ProgressDialog mProgressDialog;
     private ArrayList<GoodModel> goodModelArrayList;
     private ArrayList<String> names = new ArrayList<String>();
@@ -54,6 +59,8 @@ public class NotasActivity extends AppCompatActivity {
     private RequestQueue requestQueue;
     private Button btnDetalharA1;
     private Button btnDetalharA2;
+    private ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,16 +69,22 @@ public class NotasActivity extends AppCompatActivity {
 
         Intent novatela = getIntent();
         if(novatela != null){
-            Bundle params = ((Intent) novatela).getExtras();
+            Bundle params = novatela.getExtras();
             if(params != null){
-                String txtCpf = params.getString("edtCpf");
+                String txtCpf = params.getString("cpf");
+
+                // Função para formatar o CPF
+                String formattedCpf = formatCpf(txtCpf);
 
                 TextView cpfTV = (TextView) findViewById(R.id.txtCpf);
 
-                cpfTV.setText("CPF: "+txtCpf);
+                // Exibe o CPF formatado
+                cpfTV.setText("CPF: " + formattedCpf);
                 login = txtCpf;
             }
         }
+
+        progressBar = findViewById(R.id.progressBar);
 
         spinner = findViewById(R.id.spnSemestres);
 
@@ -100,7 +113,7 @@ public class NotasActivity extends AppCompatActivity {
 
     private void retrieveJSONSemestres() {
 
-        showSimpleProgressDialog(this, "Carregando...","Buscando dados",false);
+        progressBar.setVisibility(View.VISIBLE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlWebServicesProducaoSemestres,
                 new Response.Listener<String>() {
@@ -152,7 +165,7 @@ public class NotasActivity extends AppCompatActivity {
                                     }
                                 });
 
-                                removeSimpleProgressDialog();
+                                progressBar.setVisibility(View.GONE);
 
                             }
 
@@ -180,7 +193,7 @@ public class NotasActivity extends AppCompatActivity {
     private void retrieveJSONNotas() {
         Log.d("strrrrr", ">>" + login + selected);
 
-        showSimpleProgressDialog(this, "Carregando...","Buscando dados",false);
+        progressBar.setVisibility(View.VISIBLE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urlWebServicesProducaoNotas,
                 new Response.Listener<String>() {
@@ -222,7 +235,7 @@ public class NotasActivity extends AppCompatActivity {
                                         Toast.LENGTH_LONG).show();
                             }
 
-                            removeSimpleProgressDialog();
+                            progressBar.setVisibility(View.GONE);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -252,46 +265,6 @@ public class NotasActivity extends AppCompatActivity {
 
     }
 
-    public static void removeSimpleProgressDialog() {
-        try {
-            if (mProgressDialog != null) {
-                if (mProgressDialog.isShowing()) {
-                    mProgressDialog.dismiss();
-                    mProgressDialog = null;
-                }
-            }
-        } catch (IllegalArgumentException ie) {
-            ie.printStackTrace();
-
-        } catch (RuntimeException re) {
-            re.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
-
-    public static void showSimpleProgressDialog(Context context, String title,
-                                                String msg, boolean isCancelable) {
-        try {
-            if (mProgressDialog == null) {
-                mProgressDialog = ProgressDialog.show(context, title, msg);
-                mProgressDialog.setCancelable(isCancelable);
-            }
-
-            if (!mProgressDialog.isShowing()) {
-                mProgressDialog.show();
-            }
-
-        } catch (IllegalArgumentException ie) {
-            ie.printStackTrace();
-        } catch (RuntimeException re) {
-            re.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     boolean doubleBackToExitPressedOnce = false;
 
     @Override
@@ -311,6 +284,14 @@ public class NotasActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce=false;
             }
         }, 2000);
+    }
+
+    // Função para formatar o CPF
+    private String formatCpf(String cpf) {
+        return cpf.substring(0, 3) + "." +
+                cpf.substring(3, 6) + "." +
+                cpf.substring(6, 9) + "-" +
+                cpf.substring(9, 11);
     }
 
 }

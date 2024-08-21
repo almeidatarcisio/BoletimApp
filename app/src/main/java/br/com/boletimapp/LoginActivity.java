@@ -1,4 +1,4 @@
-package br.com.fasj.unibrasapp;
+package br.com.boletimapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,25 +16,29 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.santalu.maskedittext.MaskEditText;
 
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import br.com.fasj.unibrasapp.NotasActivity;
+import br.com.boletimapp.NotasActivity;
+import br.com.fasj.unibrasapp.R;
 
 public class LoginActivity extends AppCompatActivity {
 
     String urlWebServicesDesenvolvimento = "http://192.168.1.102/boletim/getUsuarios.php";
-    String urlWebServicesProducao = "https://webservicesboletimapp-production.up.railway.app/service1/";
+    String urlWebServicesProducao = "https://webservicespredictapp-production.up.railway.app/service1/";
 
-    StringRequest stringRequest;
-    RequestQueue requestQueue;
+    private StringRequest stringRequest;
+    private RequestQueue requestQueue;
 
-    EditText edtCpf;
-    EditText edtSenha;
-    Button btnLogin;
+    private MaskEditText edtCpf;
+    private EditText edtSenha;
+    private Button btnLogin;
+    private String cpf;
+    private String senha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,16 +69,21 @@ public class LoginActivity extends AppCompatActivity {
                     validado = false;
                 }
 
+                cpf = edtCpf.getText().toString();
+                senha = edtSenha.getText().toString();
+
                 if (validado){
                     Toast.makeText(getApplicationContext(),"Validando seus dados. Aguarde...", Toast.LENGTH_SHORT).show();
-                    validarLogin();
+                    validarLogin(cpf, senha);
                 }
 
             }
         });
     }
 
-    private void validarLogin(){
+    private void validarLogin(String cpf, String senha){
+        // Formatação CPF
+        String formattedCPF = formatCPF(cpf);
 
         stringRequest = new StringRequest(Request.Method.POST,
                 urlWebServicesProducao,
@@ -99,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (tpusuario == 1){
 
                                     Bundle params = new Bundle();
-                                    params.putString("edtCpf", edtCpf.getText().toString());
+                                    params.putString("cpf", formattedCPF);
 
                                     Intent novatela = new Intent(LoginActivity.this, NotasActivity.class);
 
@@ -131,12 +140,16 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("login", edtCpf.getText().toString());
-                params.put("senha", edtSenha.getText().toString());
+                params.put("login", formattedCPF);
+                params.put("senha", senha);
                 return params;
             }
         };
         requestQueue.add(stringRequest);
+    }
+
+    private String formatCPF(String cpf) {
+        return cpf.replaceAll("[^\\d]", "");
     }
 
 }

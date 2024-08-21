@@ -1,11 +1,11 @@
-package br.com.fasj.unibrasapp;
+package br.com.boletimapp;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import br.com.fasj.unibrasapp.LoginActivity;
+import br.com.boletimapp.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package br.com.fasj.unibrasapp;
+package br.com.boletimapp;
 
 import android.app.Application;
 import android.os.SystemClock;
